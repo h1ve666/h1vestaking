@@ -2,7 +2,7 @@
 
 pragma solidity >=0.8.9 <0.9.0;
 
-import "https://github.com/net2devcrypto/n2dstaking/N2DRewards.sol";
+import "https://github.com/h1ve666/h1vestaking/H1VE6Token.sol";
 
 
 contract NFTStaking is Ownable, IERC721Receiver {
