@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT LICENSE
 
-pragma solidity >=0.8.9 <0.9.0;
+pragma solidity 0.8.4;
 
 import "https://github.com/h1ve666/h1vestaking/H1VE6Token.sol";
 
@@ -16,18 +16,18 @@ contract H1VEStaking is Ownable, IERC721Receiver {
     address owner;
   }
 
-  event NFTStaked(address owner, uint256 tokenId, uint256 value);
-  event NFTUnstaked(address owner, uint256 tokenId, uint256 value);
+  event H1VEStaked(address owner, uint256 tokenId, uint256 value);
+  event H1VEUnstaked(address owner, uint256 tokenId, uint256 value);
   event Claimed(address owner, uint256 amount);
 
   // reference to the Block NFT contract
   Collection nft;
-  N2DRewards token;
+  H1VE6Token token;
 
   // maps tokenId to stake
   mapping(uint256 => Stake) public vault; 
 
-   constructor(Collection _nft, N2DRewards _token) { 
+   constructor(Collection _nft, H1VE6Token _token) { 
     nft = _nft;
     token = _token;
   }
@@ -86,7 +86,7 @@ contract H1VEStaking is Ownable, IERC721Receiver {
       Stake memory staked = vault[tokenId];
       require(staked.owner == account, "not an owner");
       uint256 stakedAt = staked.timestamp;
-      earned += 100000 ether * (block.timestamp - stakedAt) / 1 days;
+      earned += 1000000 ether * (block.timestamp - stakedAt) / 8 hours;
       vault[tokenId] = Stake({
         owner: account,
         tokenId: uint24(tokenId),
@@ -110,9 +110,9 @@ contract H1VEStaking is Ownable, IERC721Receiver {
      uint256 earned = 0;
       Stake memory staked = vault[tokenId];
       uint256 stakedAt = staked.timestamp;
-      earned += 100000 ether * (block.timestamp - stakedAt) / 1 days;
+      earned += 1000000 ether * (block.timestamp - stakedAt) / 1 days;
     uint256 earnRatePerSecond = totalScore * 1 ether / 1 days;
-    earnRatePerSecond = earnRatePerSecond / 100000;
+    earnRatePerSecond = earnRatePerSecond / 1000000;
     // earned, earnRatePerSecond
     return [earned, earnRatePerSecond];
   }
