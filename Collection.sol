@@ -973,11 +973,7 @@ contract ERC721 is Context, ERC165, IERC721, IERC721Metadata {
 
 // File: @openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol
 
-
-
 pragma solidity ^0.8.0;
-
-
 
 /**
  * @dev This implements an optional extension of {ERC721} defined in the EIP that adds
