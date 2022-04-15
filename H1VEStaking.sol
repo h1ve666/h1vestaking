@@ -3,6 +3,7 @@
 pragma solidity ^0.8.4;
 
 import "https://github.com/h1ve666/h1vestaking/H1VE6Token.sol";
+import "https://github.com/h1ve666/h1vestaking/Collection.sol";
 
 
 contract H1VEStaking is Ownable, IERC721Receiver {
